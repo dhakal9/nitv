@@ -15,7 +15,7 @@ class Profile(models.Model):
         ('M', 'Male'),
         ('F', 'Female'),
     )
-    #gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=GENDER_CHOICES[0])
 
     
 
