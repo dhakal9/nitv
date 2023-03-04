@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 import datetime
+from django_countries.fields import CountryField
 
 
 # Extending User Model Using a One-To-One Link
@@ -17,7 +18,7 @@ class Profile(models.Model):
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=GENDER_CHOICES[0])
 
-    
+    country = CountryField(blank=True)
 
     def __str__(self):
         return self.user.username

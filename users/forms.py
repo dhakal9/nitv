@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
+from django_countries import countries
 from .models import Profile
 
 
@@ -94,7 +94,8 @@ class UpdateProfileForm(forms.ModelForm):
     bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
     dob = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type':'date' }))
     gender = forms.CharField(widget=forms.Select(attrs={'class':'forms-control'}, choices=GENDER_CHOICES))
+    country = forms.CharField(widget=forms.Select(attrs={'class':'forms-control'}, choices=countries.countries.items()))
     
     class Meta:
         model = Profile
-        fields = ['avatar', 'bio', 'dob', 'gender']
+        fields = ['avatar', 'bio', 'dob', 'gender', 'country']
