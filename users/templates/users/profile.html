@@ -35,6 +35,9 @@
                             {{ user_form.username }}
                         <label class="small mb-1">Email:</label>
                             {{ user_form.email }}
+                        <label class="small mb-1">Phone:</label>
+                            {{ profile_form.phone }} 
+                            
                     
 
                     <label class="small mb-1">Date of Birth:</label> {{ profile_form.dob }} <br>
@@ -53,6 +56,8 @@
             <br><br>
             <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
             <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+
         </form>
+        <a href="{% url 'user-list' %}"> Click here to see the list of users</a><br>
     </div>
 {% endblock content %}

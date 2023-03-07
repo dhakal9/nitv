@@ -1,0 +1,10 @@
+{% extends "users/base.html" %}
+{% block title %} User list {% endblock title %}
+{% block content %}
+{% for user in users %}
+    <div>
+        <h2>{{ {{ user_form.first_name }} }}</h2>
+        <p>{{  user_form.email }}</p>
+        <!-- display other user fields as desired -->
+    </div>
+{% endfor %}

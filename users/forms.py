@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django_countries import countries
 from .models import Profile
-
+from phonenumber_field.formfields import PhoneNumberField
 
 class RegisterForm(UserCreationForm):
     # fields we want to include and customize in our form
@@ -109,7 +109,7 @@ class UpdateProfileForm(forms.ModelForm):
     education = forms.CharField(widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}, choices=EDUCATION_CHOICES))
     country = forms.CharField(widget=forms.Select(attrs={'class':'forms-control'}, choices=countries.countries.items()))
     contact = forms.CharField(widget=forms.Select(attrs={'class':'forms-control'}, choices=P_CONTACT_CHOICES))
-    
+    phone = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control'}), required=True)
     class Meta:
         model = Profile
-        fields = ['avatar', 'dob', 'gender', 'education', 'country', 'contact']
+        fields = ['avatar', 'dob', 'gender', 'education', 'country', 'contact', 'phone']

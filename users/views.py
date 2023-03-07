@@ -5,9 +5,9 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import View
 from django.contrib.auth.decorators import login_required
-
 from .forms import RegisterForm, LoginForm, UpdateUserForm, UpdateProfileForm
 
+from users.models import Profile
 
 def home(request):
     return render(request, 'users/home.html')
@@ -95,3 +95,8 @@ def profile(request):
         profile_form = UpdateProfileForm(instance=request.user.profile)
 
     return render(request, 'users/profile.html', {'user_form': user_form, 'profile_form': profile_form})
+
+def user_list(request):
+    users = User.objects.all()
+    context = {'users': users}
+    return render(request, 'users/user_list.html', context)
