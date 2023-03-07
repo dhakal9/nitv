@@ -90,12 +90,20 @@ class UpdateProfileForm(forms.ModelForm):
         ('M', 'Male'),
         ('F', 'Female'),
     )
+    EDUCATION_CHOICES = (
+        ("0", "BIT"),
+        ("1", "BSCIT"),
+        ("2", "BCA"),
+        ("3", "Data Science"),
+    )
+    
     avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
     bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
     dob = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type':'date' }))
     gender = forms.CharField(widget=forms.Select(attrs={'class':'forms-control'}, choices=GENDER_CHOICES))
+    education = forms.CharField(widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}, choices=EDUCATION_CHOICES))
     country = forms.CharField(widget=forms.Select(attrs={'class':'forms-control'}, choices=countries.countries.items()))
     
     class Meta:
         model = Profile
-        fields = ['avatar', 'bio', 'dob', 'gender', 'country']
+        fields = ['avatar', 'bio', 'dob', 'gender', 'education', 'country']

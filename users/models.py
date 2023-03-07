@@ -16,7 +16,15 @@ class Profile(models.Model):
         ('M', 'Male'),
         ('F', 'Female'),
     )
+    
+    EDUCATION_CHOICES = (
+        ("AUT", "Austria"),
+        ("DEU", "Germany"),
+        ("NLD", "Neitherlands"),
+    )
+     
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=GENDER_CHOICES[0])
+    education = models.CharField(max_length=100, choices=EDUCATION_CHOICES, default=EDUCATION_CHOICES[0])
 
     country = CountryField(blank=True)
 
