@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import home, profile, RegisterView
+from .views import home, profile, RegisterView, user_list
 
 urlpatterns = [
     path('', home, name='users-home'),
     path('register/', RegisterView.as_view(), name='users-register'),
     path('profile/', profile, name='users-profile'),
-    path('userlist/', profile, name='user-list'),
+    path('users/', user_list, name='user_list'),
+
 ]

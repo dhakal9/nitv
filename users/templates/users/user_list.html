@@ -2,9 +2,11 @@
 {% block title %} User list {% endblock title %}
 {% block content %}
 {% for user in users %}
-    <div>
-        <h2>{{ {{ user_form.first_name }} }}</h2>
-        <p>{{  user_form.email }}</p>
-        <!-- display other user fields as desired -->
-    </div>
+<h1>User List</h1>
+<ul>
+{% for user in users %}
+    <li>{{ user.user.username }}</li>
 {% endfor %}
+</ul>
+{% endfor %}
+{% endblock content %}
