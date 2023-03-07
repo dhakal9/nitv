@@ -5,12 +5,16 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import View
 from django.contrib.auth.decorators import login_required
-
 from .forms import RegisterForm, LoginForm, UpdateUserForm, UpdateProfileForm
+from .models import Profile
 
 
 def home(request):
     return render(request, 'users/home.html')
+
+def user_list(request):
+    users = Profile.objects.all()
+    return render(request, 'users/user_list.html', {'users': users})
 
 
 class RegisterView(View):
@@ -77,6 +81,7 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'users/change_password.html'
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('users-home')
+    
 
 
 @login_required
@@ -95,3 +100,5 @@ def profile(request):
         profile_form = UpdateProfileForm(instance=request.user.profile)
 
     return render(request, 'users/profile.html', {'user_form': user_form, 'profile_form': profile_form})
+
+
